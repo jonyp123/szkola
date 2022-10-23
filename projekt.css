@@ -4,7 +4,7 @@
 }
 
 * {
-    font-family: 'Comfortaa', cursive;  
+    font-family: 'Comfortaa', cursive;
 }
 
 .login{
@@ -32,7 +32,7 @@ form .txt {
     border: none;
     background: none;
     outline: none;
-    
+
 }
 
 .txt label {
@@ -54,7 +54,7 @@ form .txt {
     width: 0%;
     height: 2px;
    background: var(--primary-color);
-    
+
 
 }
 
@@ -66,7 +66,7 @@ form .txt {
 
 .txt input:focus ~ span::before,
 .txt input:valid ~ span::before{
-    width: 100%; 
+    width: 100%;
     color: var(--primary-color);
 }
 
@@ -82,8 +82,8 @@ form .txt {
     position: relative;
     top: 10px;
     padding: 10px;
-    
-    
+
+
 
 }
 
@@ -123,16 +123,16 @@ h1 {
     justify-content: center;
     align-items: center;
     border: 3px solid rgb(177, 177, 177);
-    background-color: var(--secondary-color); 
+    background-color: var(--secondary-color);
     position: absolute;
     padding: 70px 90px;
     transform:translate(-50%,-50%);
     top: 50%;
     left: 50%;
-    height: 300px;
+    height: 100px;
 }
 
-.btn-1  {    
+.btn-1  {
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -148,14 +148,14 @@ h1 {
     box-shadow: inset 0 0 0 0 #d5d5d5;
     transition: ease-out 0.4s;
     outline: none;
-   
-  
+
+
 }
 
 .btn-1:hover  {
     box-shadow: inset 300px 0 0 0 #609c8b;
     cursor: pointer;
-    
+
 }
 
 
@@ -192,4 +192,3 @@ h1 {
 .wave .shape-fill {
     fill: #ffffff;
 }
-
