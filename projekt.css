@@ -40,6 +40,7 @@ form .txt {
     color: #adadad;
     transform: translateY(-50%);
     font-size: 16px;
+    transition: .5s;
 }
 
 
@@ -48,10 +49,23 @@ form .txt {
     position: absolute;
     top: 30px;
     left: 0;
-    width: 100%;
+    width: 0%;
     height: 2px;
     background: var(--primary-color);
+    
 
+}
+
+.txt input:focus ~ label,
+.txt input:valid ~ label{
+    top: -5px;
+    color: var(--primary-color);
+}
+
+.txt input:focus ~ label ~ span::before,
+.txt input:valid ~ label ~ span::before{
+    width: 100%; 
+    background: var(--primary-color);
 }
 
 
