@@ -88,3 +88,4 @@ function handleRegisterSubmit() {
     document.getElementById('loginContainer').style.height = '400px';
   }
 }
+
