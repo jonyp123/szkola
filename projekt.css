@@ -1,15 +1,85 @@
 :root {
-    --primary-color: #7cb871;
+    --primary-color: #71b8a4;
+    --secondary-color: rgb(210, 210, 210);
 }
 
 * {
-    font-family: 'Comfortaa', cursive;
-   
+    font-family: 'Comfortaa', cursive;  
 }
+
+.login{
+    padding: 5px;
+    font-size: 16px;
+}
+
+.login form {
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+form .txt {
+    position: relative;
+    border-bottom: 2px solid #969696;
+    margin: 20px 0;
+}
+
+.txt input {
+    width: 100%;
+    padding: 0 5px;
+    height: 30px;
+    font-size: 17px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.txt label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #adadad;
+    transform: translateY(-50%);
+    font-size: 16px;
+}
+
+
+.txt span::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-color);
+
+}
+
+
+
+
+
+.login .submit {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    position: relative;
+    top: 10px;
+    
+    
+
+}
+
+
+
+
 body{
     background-color: #d5d5d5;
     margin: 0;
     padding: 0;
+    background-image: url(tlo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 h1 {
@@ -20,13 +90,14 @@ h1 {
     text-align: center;
     justify-content: center;
     align-items: center;
-    border: 3px solid rgb(161, 161, 161);
-    background-color:rgb(204, 204, 204); ;
+    border: 3px solid rgb(177, 177, 177);
+    background-color: var(--secondary-color); 
     position: absolute;
     padding: 70px 90px;
     transform:translate(-50%,-50%);
     top: 50%;
     left: 50%;
+    height: 300px;
 }
 
 .btn-1  {    
@@ -50,9 +121,10 @@ h1 {
 }
 
 .btn-1:hover  {
-    box-shadow: inset 300px 0 0 0 #d5d5d5;
+    box-shadow: inset 300px 0 0 0 #609c8b;
     color: #7cb871;
     cursor: pointer;
+    
 }
 
 
@@ -87,6 +159,6 @@ h1 {
 }
 
 .wave .shape-fill {
-    fill:  var(--primary-color);
+    fill: #ffffff;
 }
 
