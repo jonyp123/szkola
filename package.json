@@ -1,0 +1,26 @@
+{
+  "name": "projekt-szkolny",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonyp123/szkola.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonyp123/szkola/issues"
+  },
+  "homepage": "https://github.com/jonyp123/szkola#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-postgres": "^0.6.2",
+    "pg": "^8.8.0",
+    "pgbouncer": "^1.0.1"
+  }
+}

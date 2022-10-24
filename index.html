@@ -1,12 +1,7 @@
 <html>
     <head>
-      <script src="scripts.js">
-      function login() {
-        alert("hejka")
-        // loginForm.innerHTML =
-        //         `costamtest`
-      }
-      </script>
+      <script src="./js/scripts.js"></script>
+      <script src="./js/api.js"></script>
       <link rel="stylesheet" href="projekt.css">
       <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap" rel="stylesheet">      <div class="wave">
         <script src="https://kit.fontawesome.com/ce0f4fdcb1.js" crossorigin="anonymous"></script>
@@ -20,7 +15,7 @@
         <i class="fa-solid fa-code fa-2xl"></i>
 
         <button class="btn-1" onclick="register()"><a>Register</a></button>
-        <button class="btn-1" onclick="login()"><a>Log in</a></button>
+        <button class="btn-1" onclick="createUser(`1`, `2`)"><a>Log in</a></button>
         <div class="login" id="loginForm">
 
           </div>
@@ -29,6 +24,5 @@
 <footer>
 
 </footer>
-
     </body>
 </html>
