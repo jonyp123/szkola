@@ -1,5 +1,12 @@
+<?php
+
+?>
+
+<!DOCTYPE html>
 <html>
     <head>
+
+
       <script src="./js/scripts.js"></script>
       <link rel="stylesheet" href="projekt.css">
       <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap" rel="stylesheet">      <div class="wave">
@@ -14,7 +21,7 @@
         <i class="fa-solid fa-code fa-2xl"></i>
 
         <button class="btn-1" onclick="register()"><a>Register</a></button>
-        <button class="btn-1" onclick="createUser(`1`, `2`)"><a>Log in</a></button>
+        <button class="btn-1" onclick="login()"><a>Log in</a></button>
         <div class="login" id="loginForm">
 
           </div>
