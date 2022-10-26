@@ -1,4 +1,6 @@
 <?php
+
+echo '<?php
 $dbServername = "serwer2220135.home.pl";
 $dbUsername = "36458026_database";
 $dbPassword = "JezusMaryjaNiebolicieszyja";
@@ -17,7 +19,7 @@ print_r($information[0]["userLogin"]);
 <html>
     <head>
       <script src="./js/scripts.js"></script>
-      <link rel="stylesheet" href="projekt.css">
+      <link rel="stylesheet" href=".\.\projekt.css">
       <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap" rel="stylesheet">      <div class="wave">
         <script src="https://kit.fontawesome.com/ce0f4fdcb1.js" crossorigin="anonymous"></script>
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -32,7 +34,24 @@ print_r($information[0]["userLogin"]);
           <button class="btn-1" type="submit"><a>Register</a></button>
           <button class="btn-1" type="submit"><a>Log in</a></button>
           <div class="login" id="loginForm">
-
+          <form onsubmit="handleRegisterSubmit()">
+              <div class="txt">
+                  <input type="text" required>
+                  <span></span>
+                  <label>Username</label>
+              </div>
+              <div class="txt">
+                  <input type="password" id="password" required>
+                  <span></span>
+                  <label>Password</label>
+              </div>
+              <div class="txt">
+                  <input type="password" id="repeatPassword" required>
+                  <span></span>
+                  <label>Repeat password</label>
+              </div>
+              <button class="submit" type="submit">Register</button>
+          </form>
           </div>
         </form>
 
@@ -42,4 +61,6 @@ print_r($information[0]["userLogin"]);
 
 </footer>
     </body>
-</html>
+</html>';
+
+?>

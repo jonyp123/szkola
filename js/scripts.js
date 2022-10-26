@@ -21,6 +21,11 @@ function register (){
           </form>`
   document.getElementById('loginContainer').style.height = '360px';
 }
+
+function clickMe(){
+var result ="<?php php_func(); ?>"
+}
+
 // to samo co wyzej, tylko w przypadku loginu
 function login() {
   loginForm.innerHTML =
@@ -35,7 +40,7 @@ function login() {
                   <span></span>
                   <label>Password</label>
               </div>
-              <button class="submit" type="submit"> Login </button>
+              <button class="submit" type="submit" onclick="clickMe()"> Login </button>
           </form>`
           //dokument ustawi wysokosc okienka o ID loginContainer
   document.getElementById('loginContainer').style.height = '300px';
