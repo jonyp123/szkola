@@ -1,38 +1,211 @@
-.App {
-  text-align: center;
+:root {
+  --primary-color: #71b8a4;
+  --secondary-color: rgb(210, 210, 210);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  font-family: 'Comfortaa', cursive;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.login{
+  padding: 5px;
+  font-size: 16px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+
+.login form {
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+form .txt {
+  position: relative;
+  border-bottom: 2px solid #969696;
+  margin: 20px 0;
+  padding: 5px;
+}
+
+.txt input {
+  width: 100%;
+  padding: 0 5px;
+  height: 30px;
+  font-size: 17px;
+  border: none;
+  background: none;
+  outline: none;
+
+}
+
+.txt label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: #adadad;
+  transform: translateY(-50%);
+  font-size: 16px;
+  transition: .5s;
+}
+
+
+.txt span::before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+ background: var(--primary-color);
+
+
+}
+
+.txt input:focus ~ label,
+.txt input:valid ~ label{
+  top: -5px;
+  color: var(--primary-color);
+}
+
+.txt input:focus ~ span::before,
+.txt input:valid ~ span::before{
+  width: 100%;
+  color: var(--primary-color);
+}
+
+
+
+
+
+.login .submit {
+  display: block;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  margin: auto;
+  position: relative;
+  top: 10px;
+  padding: 10px;
+
+
+
 }
 
-.App-link {
-  color: #61dafb;
+.submit {
+  width: 100px;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  box-shadow: inset 0 0 0 0 #d5d5d5;
+  transition: ease-out 0.4s;
+  outline: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.submit:hover {
+  box-shadow: inset 100px 0 0 0 #609c8b;
+}
+
+
+
+body{
+  background-color: #d5d5d5;
+  margin: 0;
+  padding: 0;
+  background-image: url(tlo.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1 {
+  position: relative;
+}
+
+.container {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid rgb(177, 177, 177);
+  background-color: var(--secondary-color);
+  position: absolute;
+  padding: 70px 90px;
+  transform:translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  height: 100px;
+  transition: all .3s ease-in-out;
+}
+
+.btn-1  {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  display: block;
+  border: none;
+  padding: 8px;
+  background-color: var(--primary-color);
+  border-radius: 30px;
+  margin: auto;
+  margin-top: 20px;
+  width: 300px;
+  box-shadow: inset 0 0 0 0 #d5d5d5;
+  transition: ease-out 0.4s;
+  outline: none;
+  
+
+
+}
+
+
+
+.transform {
+  -webkit-transition: all 2s ease;  
+  -moz-transition: all 2s ease;  
+  -o-transition: all 2s ease;  
+  -ms-transition: all 2s ease;  
+  transition: all 2s ease;
+}
+
+
+
+
+.btn-1:hover  {
+  box-shadow: inset 300px 0 0 0 #609c8b;
+  cursor: pointer;
+
+}
+
+
+
+.container i {
+  position: relative;
+  padding: 10px;
+  bottom: 20px;
+  color: black;
+}
+
+.container .btn-1 a {
+  text-decoration: none;
+  color: black;
+}
+
+
+.wave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.wave svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 150px;
+}
+
+.wave .shape-fill {
+  fill: #ffffff;
 }
