@@ -1,12 +1,19 @@
 <?php
+$dbServername = "serwer2220135.home.pl";
+$dbUsername = "36458026_database";
+$dbPassword = "JezusMaryjaNiebolicieszyja";
+$dbName = "36458026_database";
 
+$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword,$dbName);
+$result = mysqli_query($conn, "SELECT * FROM user");
+$information =  mysqli_fetch_all($result, MYSQLI_ASSOC);
+ 
+print_r($information[0]["userLogin"]);
 ?>
 
 <!DOCTYPE html>
 <html>
-    <head>
-
-
+    <head>                                                                                    
       <script src="./js/scripts.js"></script>
       <link rel="stylesheet" href="projekt.css">
       <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap" rel="stylesheet">      <div class="wave">
@@ -17,13 +24,14 @@
     </div>
     </head>
     <body>
+        $conn;
     <div class="container" id="loginContainer">
         <i class="fa-solid fa-code fa-2xl"></i>
 
         <button class="btn-1" onclick="register()"><a>Register</a></button>
         <button class="btn-1" onclick="login()"><a>Log in</a></button>
         <div class="login" id="loginForm">
-
+            
           </div>
     </div>
 
