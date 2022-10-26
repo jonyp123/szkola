@@ -1,0 +1,1 @@
+var db = openDatabase("serwer2220135.home.pl")
