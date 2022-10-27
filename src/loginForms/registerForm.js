@@ -1,8 +1,11 @@
+import React from "react";
+//import { useForm } from "react-hook-form";
+
 const registerForm = () => {
 
   return (  
     <>
-      <form>
+        <form>
               <div class="txt">
                   <input type="text" required/>
                   <span></span>

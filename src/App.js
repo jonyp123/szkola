@@ -1,16 +1,30 @@
 import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 import waves from './waves.svg';
-import loginForm from './loginForms/loginForm';
+import LoginForm from './loginForms/loginForm';
 import { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { createUser } from './server/api';
+import './App.css';
+import RegisterForm from './loginForms/registerForm';
+import {db} from './firebase-config';
+import { collection, getDocs } from 'firebase/firestore';
+import { useEffect } from 'react';
 
+const App= () => {
 
-function App() {
+  const [isLoging, setIsLoging] = useState(true)
+  const [users, setUsers] = useState(true)
 
+  const usersCollectionRef = collection(db, "user")
 
+  useEffect(() => {
+    const getUsers = async () => {
+      const data = await getDocs(usersCollectionRef);
+      console.log(data.docs[0]._document.data.value.mapValue.fields);
+    };
 
+    getUsers();
+  }, [])
 
 
   return (
@@ -19,14 +33,12 @@ function App() {
       <script src="https://kit.fontawesome.com/ce0f4fdcb1.js" crossOrigin="anonymous"></script>
       <img src={waves}></img>
       <div className="container">
-      <FontAwesomeIcon icon="fa-regular fa-code" />
-        <form>
-          <button className="btn-1">Register</button>
-          <button className="btn-1">Log in</button>
-          <div className="login" id="loginForm">
-
-          </div>
-        </form>
+        <button className="btn-1" onClick={(e) => setIsLoging(false)}>Register</button>
+        <button className="btn-1" onClick={(e) => setIsLoging(true)}>Log in</button>
+        <div className="login" id="loginForm">
+          {isLoging && <LoginForm></LoginForm>}
+          {!isLoging && <RegisterForm></RegisterForm>}
+        </div>
       </div>
       <footer>
 
