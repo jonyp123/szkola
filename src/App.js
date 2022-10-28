@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import './App.css';
 import RegisterForm from './loginForms/registerForm';
 import {db} from './firebase-config';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, addDoc } from 'firebase/firestore';
 import { useEffect } from 'react';
 
 const App= () => {
@@ -15,17 +15,7 @@ const App= () => {
   const [isLoging, setIsLoging] = useState(true)
   const [users, setUsers] = useState(true)
 
-  const usersCollectionRef = collection(db, "user")
-
-  useEffect(() => {
-    const getUsers = async () => {
-      const data = await getDocs(usersCollectionRef);
-      console.log(data.docs[0]._document.data.value.mapValue.fields);
-    };
-
-    getUsers();
-  }, [])
-
+  const [] = useState()
 
   return (
     <div className="App">
