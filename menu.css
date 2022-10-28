@@ -1,0 +1,14 @@
+.grid-container {
+    display: inline-grid;
+    padding: 15px;
+    position: absolute;
+    grid-gap: 5px;
+    grid-template-columns: 100px 100px;
+}
+
+.grid-item{
+    border: 1px solid;
+    padding: 15px;
+    
+
+}
