@@ -1,14 +1,86 @@
-.grid-container {
-    display: inline-grid;
-    padding: 15px;
-    position: absolute;
-    grid-gap: 5px;
-    grid-template-columns: 100px 100px;
+*{
+    font-family: 'Comfortaa';
 }
 
-.grid-item{
-    border: 1px solid;
-    padding: 15px;
-    
 
+body{
+    background-color: #d5d5d5;
+    margin: 0;
+    padding: 0;
+    background-image: url(/photos/tlo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+
+
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 12rem);
+    gap: 150px;
+    grid-auto-rows: minmax(150px, auto);
+    justify-content: center;
+    position: relative;
+    top: 30%;
+    text-align: center;
+}
+
+.grid-item1{
+    background: #d5d5d5;
+    width: 150px;
+    height: 150px;
+    border: 1px solid #adadad;
+    padding: 30px;
+    justify-items: center;
+    text-align: center;
+    margin: auto;
+    border-radius: 40px;
+    
+}
+
+.grid-item2{
+    background: #d5d5d5;
+    width: 150px;
+    height: 150px;
+    border: 1px solid #adadad;
+    padding: 30px;
+    justify-items: center;
+    text-align: center;
+    margin: auto;
+    border-radius: 40px;
+}
+
+.grid-item3{
+    background: #d5d5d5;
+    width: 150px;
+    height: 150px;
+    border: 1px solid #adadad;;
+    padding: 30px;
+    justify-items: center;
+    text-align: center;
+    margin: auto;
+    border-radius: 40px;
+}
+
+.grid-item4{
+    background: #d5d5d5;
+    width: 150px;
+    height: 150px;
+    border: 1px solid #adadad;
+    padding: 30px;
+    justify-items: center;
+    text-align: center;
+    border-radius: 40px;   
+    position: relative;
+    
+    
+}
+
+.grid-item4 p {
+    font-size: 33px;
+    position: relative;
+    top: 10%;
 }
