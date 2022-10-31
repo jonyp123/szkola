@@ -1,5 +1,5 @@
 import React from "react";
-import App from "../App";
+import Home from "../home";
 import {useForm} from "react-hook-form";
 import { collection, getDocs, addDoc } from 'firebase/firestore';
 import {db} from './../firebase-config';
@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import AlreadyExists from "../errors/alreadyExists";
 import PasswordDoesntMatch from "../errors/passwordDoesntMatch.js";
+import md5 from 'md5-hash'
 
 const RegisterForm = () => {
   
@@ -34,9 +35,11 @@ const RegisterForm = () => {
   function createUser() {
     if(exists === false && passwordMatch === true){
       const Create = async () =>{
-      const data = await addDoc(usersCollectionRef, { login: newUser, password: newPass});
+      const data = await addDoc(usersCollectionRef, { login: newUser, password: md5(newPass)});
       };
       Create();
+      setExists(null);
+      setPasswordMatch(null)
     }
   };
 

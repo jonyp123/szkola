@@ -1,0 +1,158 @@
+*{
+    font-family: 'Comfortaa';
+}
+
+.hello{
+    position: relative;
+    font-size: 30px;
+    text-align: center;
+    top: 10%;
+    color: #fff;
+
+   
+}
+
+.anim {
+    display: inline-block;
+    position: relative;
+ 
+}
+
+.anim::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #ffffff;
+    border-radius: 3px;
+    animation: under 2s 0s forwards;
+    animation-delay: 0.5s;
+   
+}
+
+
+@keyframes under {
+    from {width: 0;}
+    to {width: 100%};
+  }
+
+
+
+body{
+    background-color: #ece9e9;
+    margin: 0;
+    padding: 0;
+    background-image: url(tlo2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 12rem);
+    gap: 150px;
+    grid-auto-rows: minmax(150px, auto);
+    justify-content: center;
+    position: relative;
+    top: 20%;
+    text-align: center;
+    
+}
+
+.grid-item1{
+    background: #ece9e9;
+    width: 150px;
+    height: 150px;
+   
+    padding: 30px;
+    justify-items: center;
+    text-align: center;
+    margin: auto;
+    border-radius: 40px;
+    transition: background-color 2s;
+  
+  
+  
+    
+  
+}
+
+.grid-item2{
+    background: #ece9e9;
+    width: 150px;
+    height: 150px;
+
+    padding: 30px;
+    justify-items: center;
+    text-align: center;
+    margin: auto;
+    border-radius: 40px;
+    transition: background-color 2s;
+}
+
+.grid-item3{
+    background: #ece9e9;
+    width: 150px;
+    height: 150px;
+
+    padding: 30px;
+    justify-items: center;
+    text-align: center;
+    margin: auto;
+    border-radius: 40px;
+    transition: background-color 2s;
+}
+
+.grid-item4{
+    background: #ece9e9;
+    width: 150px;
+    height: 150px;
+
+    padding: 30px;
+    justify-items: center;
+    text-align: center;
+    border-radius: 40px;   
+    position: relative;
+    transition: background-color 2s;
+    
+}
+
+.grid-item4 p {
+    font-size: 30px;
+    position: relative;
+
+}
+
+
+.grid-item1,.grid-item2,.grid-item3 {
+    font-size: 20px;
+}
+
+.grid-item1:hover, .grid-item1:focus{
+    background-color: #e91e63;
+    color: #fff;
+
+}
+
+.grid-item2:hover, .grid-item1:focus{
+    background-color: #bcb12f;
+    color: #fff;
+
+}
+
+.grid-item3:hover, .grid-item1:focus{
+    background-color: #229e39;
+    color: #fff;
+
+}
+.grid-item4:hover, .grid-item1:focus{
+    background-color: #1e84e9;
+    color: #fff;
+
+}
