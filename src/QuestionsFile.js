@@ -1,17 +1,19 @@
-
 import './menu.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFileLines } from "@fortawesome/free-solid-svg-icons";
 
 const QuestionsFile = () => {
-  return (  
+  return (
     <div>
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet"/>
-   <script src="https://kit.fontawesome.com/ce0f4fdcb1.js" crossorigin="anonymous"></script>
 
   <div className="hello">
 <p className="anim">Hello, user_name!</p></div>
 <div className="grid-container">
-    
-    <div className="grid-item1"><i className="fa-solid fa-file-lines fa-2x"></i><p>
+
+    <div className="grid-item1">
+      <FontAwesomeIcon icon={faFileLines} />
+    <p>
       Create a new exam
     </p>
   </div>
