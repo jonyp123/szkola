@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Home from "../home";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {useForm} from "react-hook-form"
 import md5 from 'md5-hash'
 import { collection, getDocs, addDoc } from 'firebase/firestore';
@@ -18,6 +18,7 @@ const LoginForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  let navigate = useNavigate();
 
 
   useEffect(() => {
@@ -39,7 +40,7 @@ const LoginForm = () => {
   function loginSubmit() {
     for(var i = 0; i < users.length; i++){
       if(login === users[i]._document.data.value.mapValue.fields.login.stringValue){
-        <Link to="./../QuestionsFile"></Link>
+        navigate("./../QuestionsFile");
         return;
       }else{
         console.log("uzytkownik nie istnieje")
