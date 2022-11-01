@@ -7,7 +7,7 @@ import Exam from './exam';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Exam />
+    <App />
   </React.StrictMode>
 );
 
