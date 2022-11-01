@@ -6,7 +6,7 @@
     position: relative;
     font-size: 30px;
     text-align: center;
-    top: 10%;
+    top: 20px;
     color: #fff;
 
    
@@ -41,12 +41,11 @@
 
 
 body{
-    background-color: #ece9e9;
+    background-color: #5a9685bc;
     margin: 0;
     padding: 0;
-    background-image: url(tlo2.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+
+ 
     
 }
 
@@ -60,8 +59,10 @@ body{
     grid-auto-rows: minmax(150px, auto);
     justify-content: center;
     position: relative;
-    top: 20%;
+    top: 30%;
     text-align: center;
+    padding: 5rem;
+    
     
 }
 
@@ -130,8 +131,10 @@ body{
 }
 
 
-.grid-item1,.grid-item2,.grid-item3 {
+.grid-item1,.grid-item2,.grid-item3, .grid-item4 {
     font-size: 20px;
+    cursor: pointer;
+    box-shadow: 8px 8px 16px -12px rgba(66, 68, 90, 1);
 }
 
 .grid-item1:hover, .grid-item1:focus{
