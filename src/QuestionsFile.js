@@ -1,6 +1,9 @@
 import './menu.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFileLines } from "@fortawesome/free-solid-svg-icons";
+import { faFolderOpen } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faUsers } from "@fortawesome/free-solid-svg-icons";
 
 const QuestionsFile = () => {
   return (
@@ -17,17 +20,23 @@ const QuestionsFile = () => {
       Create a new exam
     </p>
   </div>
-    <div className="grid-item2"><i className="fa-solid fa-folder-open fa-2x"></i>
-      <div className="circle">
+    <div className="grid-item2">
+    <FontAwesomeIcon icon={faFolderOpen} />
       <p>
       Check your exams
     </p>
-    </div>
+    
   </div>
-    <div className="grid-item3"><i className="fa-solid fa-box-archive fa-2x"></i><p>
-      Sialala
-    </p></div>
-    <div className="grid-item4"><i className="fa-solid fa-terminal fa-2x"></i><p>Log Out</p></div>
+    <div className="grid-item3">
+    <FontAwesomeIcon icon={faUsers} />
+      <p>
+      Join an exam
+    </p>
+    </div>
+    <div className="grid-item4">
+      <FontAwesomeIcon icon={faArrowRight} />
+      <p>Log Out</p>
+      </div>
  
 </div>
 
