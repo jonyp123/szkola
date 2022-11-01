@@ -23,7 +23,7 @@ const Home= () => {
       <script src="https://kit.fontawesome.com/ce0f4fdcb1.js" crossOrigin="anonymous"></script>
       <img src={waves}></img>
       <div className="container">
-        <button className="btn-1" onClick={(e) => setIsLoging(false)}>Rister</button>
+        <button className="btn-1" onClick={(e) => setIsLoging(false)}>Register</button>
         <button className="btn-1" onClick={(e) => setIsLoging(true)}>Log in</button>
         <div className="login" id="loginForm">
           {isLoging && <LoginForm></LoginForm>}
