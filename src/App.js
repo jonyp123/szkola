@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './home';
 import QuestionsFile from './QuestionsFile';
+import ReactDOM from 'react-dom/client';
 
 const App= () => {
 
@@ -12,6 +13,7 @@ const App= () => {
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/QuestionsFile" element={<QuestionsFile/>}/>
+          
           </Routes>
       </div>
     </Router>

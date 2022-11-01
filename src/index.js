@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom/client';
 import App from "./App";
 import QuestionsFile from './QuestionsFile';
 import reportWebVitals from './reportWebVitals';
-
+import Exam from './exam';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Exam />
   </React.StrictMode>
 );
 
