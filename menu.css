@@ -41,10 +41,9 @@
 
 
 body{
-    background-color: #ece9e9;
     margin: 0;
     padding: 0;
-    background-image: url(/photos/tlo2.jpg);
+    background-color: #3f7465a5;
     background-repeat: no-repeat;
     background-size: cover;
     
@@ -63,6 +62,7 @@ body{
     top: 20%;
     text-align: center;
     
+
 }
 
 .grid-item1{
@@ -130,8 +130,9 @@ body{
 }
 
 
-.grid-item1,.grid-item2,.grid-item3 {
+.grid-item1,.grid-item2,.grid-item3, .grid-item4 {
     font-size: 20px;
+    cursor: pointer;
 }
 
 .grid-item1:hover, .grid-item1:focus{
