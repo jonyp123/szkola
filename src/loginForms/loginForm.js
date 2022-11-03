@@ -7,6 +7,9 @@ import { collection, getDocs, addDoc } from 'firebase/firestore';
 import {db} from './../firebase-config';
 import { useEffect } from "react";
 
+export let test = "";
+export let isLogged = false;
+
 const LoginForm = () => {
 
   const [login, setLogin] = useState("")
@@ -18,8 +21,12 @@ const LoginForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   let navigate = useNavigate();
 
+  useEffect(() => {
+    isLogged = false;
+  }, [])
 
   useEffect(() => {
     const getUsers = async () => {
@@ -40,11 +47,14 @@ const LoginForm = () => {
 
   function loginSubmit() {
     for(var i = 0; i < users.length; i++){
-      if(login === users[i]._document.data.value.mapValue.fields.login.stringValue){
-        navigate("./../QuestionsFile");
+      if(login === users[i]._document.data.value.mapValue.fields.login.stringValue && md5(pass) === users[i]._document.data.value.mapValue.fields.password.stringValue){
+        navigate("./../menu");
+        test = login;
+        isLogged = true;
         return;
       }else{
         console.log("uzytkownik nie istnieje")
+        console.log(isLogged)
       }
     }
   }

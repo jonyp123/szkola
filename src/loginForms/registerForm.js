@@ -8,6 +8,10 @@ import { useState } from "react";
 import AlreadyExists from "../errors/alreadyExists";
 import PasswordDoesntMatch from "../errors/passwordDoesntMatch.js";
 import md5 from 'md5-hash'
+import { useNavigate } from "react-router-dom";
+
+export let test2 = "";
+export let isRegistered = false;
 
 const RegisterForm = () => {
   
@@ -17,12 +21,16 @@ const RegisterForm = () => {
   const [exists, setExists] = useState(false)
   const [passwordMatch, setPasswordMatch] = useState(true)
   const usersCollectionRef = collection(db, "user")
+  let navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  useEffect(() => {
+    isRegistered = false;
+  }, [])
 
   useEffect(() => {
     const getUsers = async () => {
@@ -36,6 +44,9 @@ const RegisterForm = () => {
     if(exists === false && passwordMatch === true){
       const Create = async () =>{
       const data = await addDoc(usersCollectionRef, { login: newUser, password: md5(newPass)});
+      isRegistered = true;
+      test2 = newUser;
+      navigate("/menu");
       };
       Create();
       setExists(null);

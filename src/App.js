@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './home';
-import QuestionsFile from './QuestionsFile';
+import Menu from './menu';
 import ReactDOM from 'react-dom/client';
 
 const App= () => {
@@ -12,7 +12,7 @@ const App= () => {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="/QuestionsFile" element={<QuestionsFile/>}/>
+          <Route path="/Menu" element={<Menu/>}/>
           
           </Routes>
       </div>
