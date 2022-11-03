@@ -37,6 +37,7 @@ const LoginForm = () => {
     setPass(e.target.value); 
   }
 
+
   function loginSubmit() {
     for(var i = 0; i < users.length; i++){
       if(login === users[i]._document.data.value.mapValue.fields.login.stringValue){
@@ -44,7 +45,6 @@ const LoginForm = () => {
         return;
       }else{
         console.log("uzytkownik nie istnieje")
-        return;
       }
     }
   }
