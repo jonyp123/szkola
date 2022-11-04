@@ -9,7 +9,7 @@ import AlreadyExists from "../errors/alreadyExists";
 import PasswordDoesntMatch from "../errors/passwordDoesntMatch.js";
 import md5 from 'md5-hash'
 import { useNavigate } from "react-router-dom";
-
+import './register.css';
 export let test2 = "";
 export let isRegistered = false;
 

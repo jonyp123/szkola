@@ -159,3 +159,47 @@ body{
     color: #fff;
 
 }
+ 
+.animate__backInDown{
+    position: relative;
+    top: 20%;
+}
+
+
+
+.container-log{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    background-color: rgb(210, 210, 210);
+    display: block;
+    height: 300px;
+    width: 400px;
+    text-align: center;
+    font-family: 'Comfortaa';
+    border: 2px solid rgb(181, 181, 181);
+}
+
+.log-back{
+    text-align: center;
+    margin-top: 10px;
+    display: block;
+    background:#5f9b8a;
+    border-radius: 40px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: none;
+    padding: 20px;
+    transform: translateX(-50%);
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 #d5d5d5;
+  transition: ease-out 0.4s;
+}
+
+.log-back:hover{
+    box-shadow: inset 200px 0 0 0 #609c8b;
+ 
+}
