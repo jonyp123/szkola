@@ -8,7 +8,7 @@ import {test, isLogged} from "./loginForms/loginForm"
 import { useNavigate } from "react-router-dom";
 import App from './App';
 import { isRegistered, test2 } from './loginForms/registerForm';
-import 'animate.css';
+import NotLogged from './errors/notLogged';
 const Menu = () => {
 
   let navigate = useNavigate();
@@ -23,7 +23,10 @@ const Menu = () => {
 <p className="anim">Hello, {isLogged? test : test2}</p></div>
 <div className="grid-container">
 
-    <div className="grid-item1">
+    <div className="grid-item1" onClick={()=>{
+      navigate("/ExamCreate");
+      }  
+      }>
       <FontAwesomeIcon icon={faFileLines} />
     <p>
       Create a new exam
@@ -65,18 +68,7 @@ const Menu = () => {
       );
   }else{
     return (
-
-      <div className='notLoggedUser'>
-         <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet"/>
-         <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
-        <div className='container-log'>
-       <p className='animate_animated animate__backInDown'> Please log-in first!</p>
-       <button className='log-back' onClick={() => {navigate("/")}}>Go back to login page</button>
-       </div>
-      </div>
+      <NotLogged></NotLogged>
     )
   }
 }
