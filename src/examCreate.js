@@ -13,9 +13,8 @@ const ExamCreate = () => {
 
   const createQuiz = async() => {
     const quizesCollectionRef = collection(db, "quiz")
-      for(var i = 0; i<=questions; i++){
-        const data = await addDoc(quizesCollectionRef, { question: questions[i]});
-      }
+        const data = await addDoc(quizesCollectionRef, { questions } );
+    setQuestions([])   
       };
 
   const [questions, setQuestions] = useState([]);
