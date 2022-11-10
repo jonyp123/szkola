@@ -4,33 +4,68 @@ import { isRegistered } from "./loginForms/registerForm";
 import NotLogged from "./errors/notLogged";
 import { FormProvider, useForm } from "react-hook-form";
 import { useState } from "react";
+import { addDoc, collection } from "firebase/firestore";
+import {db} from './firebase-config';
 
 const ExamCreate = () => {
 
   let navigate = useNavigate();
 
+  const createQuiz = async() => {
+    const quizesCollectionRef = collection(db, "quiz")
+      for(var i = 0; i<=questions; i++){
+        const data = await addDoc(quizesCollectionRef, { question: questions[i]});
+      }
+      };
+
   const [questions, setQuestions] = useState([]);
+  const [nextQuestionType, setNextQuestionType] = useState("ABCD");
   const Logged = () => {
 
     let questionsList = 
     questions.length > 0 && 
     questions.map((item, id) => {
-      if(!null){
+      if(item.type === "open"){
+        if(!null){
+          return (
+            <div>
+              <h2>
+                {id + 1}. question:
+              </h2>
+              <p>{item.question}</p>
+              <h2>
+                {id + 1}. answer:
+              </h2>
+              <p>{item.answer}</p>
+              <button> delete this question (not working yet!)</button>
+            </div>
+          );
+        }
+      }else{
         return (
-          <div>
-            <h2>
-              {id + 1}. question:
-            </h2>
-            <p>{item.question}</p>
-            <h2>
-              {id + 1}. answer:
-            </h2>
-            <p>{item.answer}</p>
-            <button> delete this question (not working yet!)</button>
-          </div>
-        );
+          <>
+            <div>
+              <h2>
+                {id + 1}. question:
+              </h2>
+              <p>{item.question}</p>
+              <h2>
+                answers:
+              </h2>
+              <p>A: {item.answerA}</p>
+              <p>B: {item.answerB}</p>
+              <p>C: {item.answerC}</p>
+              <p>D: {item.answerD}</p>
+              <h2>
+                correct answer:
+                <br/>
+                {item.correctAnswer}
+              </h2>
+              <button> delete this question (not working yet!)</button>
+            </div>
+          </>
+        )
       }
-
     }, this)
 
     const MyForm = () => {
@@ -50,26 +85,97 @@ const ExamCreate = () => {
       function questionCreate (dataCreate) {
         const tempQuestions = [];
         setIndex(index + 1)
-        var questionsNewObj = {
-          id: index,
-          question: dataCreate.question, 
-          answer: dataCreate.answer
-        };
-        setQuestions([...questions, questionsNewObj]);
+        let questionsNewObj; 
+        if(nextQuestionType === "open answer"){
+          questionsNewObj = {
+            id: index,
+            type: "open",
+            question: dataCreate.question, 
+            answer: dataCreate.answer
+          };
+          setQuestions([...questions, questionsNewObj]);
+        }else{
+          questionsNewObj = {
+            id: index,
+            type: "choice",
+            question: dataCreate.question, 
+            answerA: dataCreate.answerA,
+            answerB: dataCreate.answerB,
+            answerC: dataCreate.answerC,
+            answerD: dataCreate.answerD,
+            correctAnswer: dataCreate.correctAnswer
+          };
+          setQuestions([...questions, questionsNewObj]);
+          console.log(questions)
+        }
       
 
         console.log(questions);
       }
 
+      function submitWholeQuiz(dataToPost) {
+        createQuiz()
+      }
+
+      function handleAnswerTypeChange(){
+        if(nextQuestionType === "ABCD"){
+          setNextQuestionType("open answer")
+        }else {
+          setNextQuestionType("ABCD")
+        }
+      }
+
+      const Answer = () => {
+        if(nextQuestionType === "ABCD"){
+        return(
+          <>
+            <br></br>
+            <label>First Answer</label>
+            <input {...register('answerA')}></input>
+            <br></br>
+            <label>Second Answer</label>
+            <input {...register('answerB')}></input>
+            <br></br>
+            <label>Third Answer</label>
+            <input {...register('answerC')}></input>
+            <br></br>
+            <label>fourth Answer</label>
+            <input {...register('answerD')}></input>
+            <br></br>
+            <label>which answer is correct?</label>
+            <select {...register('correctAnswer')}>
+              <option value={"a"}>A</option>
+              <option value={"b"}>B</option>
+              <option value={"c"}>C</option>
+              <option value={"d"}>D</option>
+            </select>
+          </>
+        )
+        }else{
+          return(
+            <>
+              <input {...register('openAnswer')}></input>
+              <br></br>
+            </>
+          )
+        }
+
+      }
+
       return (
+        <>
       <form onSubmit={handleSubmit(questionCreate)}>
         <label>Question</label>
         <input {...register('question')}></input>
+        <br></br>
         <label>Answer</label>
-        <input {...register('answer')}></input>
+        <Answer/>
         <button type="submit">submit Question</button>
-        <button onClick={() => {setQuestions([])}}>reset quiz</button>
       </form>
+      <button onClick={() => {setQuestions([])}}>reset quiz</button>
+      <button onClick={() => {submitWholeQuiz()}}>Save your quiz</button>
+      <button onClick={() => {handleAnswerTypeChange()}}>Change question type to {nextQuestionType === "ABCD"? "open answer" : "ABCD"}</button>
+      </>
       )
     }
 
