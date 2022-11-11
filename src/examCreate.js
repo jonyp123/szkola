@@ -6,6 +6,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import {db} from './firebase-config';
+import './examCreate.css';
 
 const ExamCreate = () => {
 
@@ -60,7 +61,7 @@ const ExamCreate = () => {
                 <br/>
                 {item.correctAnswer}
               </h2>
-              <button> delete this question (not working yet!)</button>
+              <button className="quizButton"> delete this question (not working yet!)</button>
             </div>
           </>
         )
@@ -90,7 +91,7 @@ const ExamCreate = () => {
             id: index,
             type: "open",
             question: dataCreate.question, 
-            answer: dataCreate.answer
+            answer: dataCreate.openAnswer
           };
           setQuestions([...questions, questionsNewObj]);
         }else{
@@ -163,17 +164,21 @@ const ExamCreate = () => {
 
       return (
         <>
-      <form onSubmit={handleSubmit(questionCreate)}>
+      <form onSubmit={handleSubmit(questionCreate)} className="quizForm"> 
         <label>Question</label>
         <input {...register('question')}></input>
         <br></br>
         <label>Answer</label>
         <Answer/>
-        <button type="submit">submit Question</button>
+        <button type="submit" className="quizButton">submit Question</button>
       </form>
-      <button onClick={() => {setQuestions([])}}>reset quiz</button>
-      <button onClick={() => {submitWholeQuiz()}}>Save your quiz</button>
-      <button onClick={() => {handleAnswerTypeChange()}}>Change question type to {nextQuestionType === "ABCD"? "open answer" : "ABCD"}</button>
+      <div className="container">
+        <button className="quizButton" onClick={() => {setQuestions([])}}>reset quiz</button>
+        <button className="quizButton" onClick={() => {submitWholeQuiz()}}>Save your quiz</button>
+        <button className="quizButton" onClick={() => {handleAnswerTypeChange()}}>Change question type to {nextQuestionType === "ABCD"? "open answer" : "ABCD"}</button>
+        <button className="quizButton" onClick={() => {navigate('/menu')}}>go back to menu</button>
+      </div>
+      
       </>
       )
     }
@@ -190,7 +195,7 @@ const ExamCreate = () => {
     return (
       <>
         <Logged></Logged>
-        <button onClick={() => {navigate('/menu')}}>go back to menu</button>
+        
       </>
       );
   }else if (isRegistered){
