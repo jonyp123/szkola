@@ -130,19 +130,19 @@ const ExamCreate = () => {
         return(
           <>
             <br></br>
-            <label>First Answer</label>
-            <input {...register('answerA')}></input>
+            <label >First Answer</label>
+            <input  className="quizInput" {...register('answerA')}></input>
             <br></br>
-            <label>Second Answer</label>
-            <input {...register('answerB')}></input>
+            <label >Second Answer</label>
+            <input  className="quizInput" {...register('answerB')}></input>
             <br></br>
-            <label>Third Answer</label>
-            <input {...register('answerC')}></input>
+            <label >Third Answer</label>
+            <input  className="quizInput" {...register('answerC')}></input>
             <br></br>
-            <label>fourth Answer</label>
-            <input {...register('answerD')}></input>
+            <label >fourth Answer</label>
+            <input  className="quizInput" {...register('answerD')}></input>
             <br></br>
-            <label>which answer is correct?</label>
+            <label >which answer is correct?</label>
             <select {...register('correctAnswer')}>
               <option value={"a"}>A</option>
               <option value={"b"}>B</option>
@@ -154,7 +154,8 @@ const ExamCreate = () => {
         }else{
           return(
             <>
-              <input {...register('openAnswer')}></input>
+              <label >Answer</label>
+              <input  className="quizInput" {...register('openAnswer')}></input>
               <br></br>
             </>
           )
@@ -165,14 +166,14 @@ const ExamCreate = () => {
       return (
         <>
       <form onSubmit={handleSubmit(questionCreate)} className="quizForm"> 
-        <label>Question</label>
-        <input {...register('question')}></input>
+        <label >Question</label>
+        <input className="quizInput" {...register('question')}></input>
         <br></br>
-        <label>Answer</label>
+
         <Answer/>
         <button type="submit" className="quizButton">submit Question</button>
       </form>
-      <div className="container">
+      <div className="quizContainer">
         <button className="quizButton" onClick={() => {setQuestions([])}}>reset quiz</button>
         <button className="quizButton" onClick={() => {submitWholeQuiz()}}>Save your quiz</button>
         <button className="quizButton" onClick={() => {handleAnswerTypeChange()}}>Change question type to {nextQuestionType === "ABCD"? "open answer" : "ABCD"}</button>
