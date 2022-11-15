@@ -1,9 +1,9 @@
 import { isLogged } from "./loginForms/loginForm";
 import { useNavigate } from "react-router-dom";
-import { isRegistered } from "./loginForms/registerForm"; 
+import { isRegistered } from "./loginForms/registerForm";
 import NotLogged from "./errors/notLogged";
 import { FormProvider, useForm } from "react-hook-form";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import {db} from './firebase-config';
 import './examCreate.css';
@@ -13,22 +13,37 @@ const ExamCreate = () => {
   let navigate = useNavigate();
 
   const createQuiz = async() => {
-    const quizesCollectionRef = collection(db, "quiz")
-        const data = await addDoc(quizesCollectionRef, { questions } );
-    setQuestions([])   
+    if(questions.length > 0){
+      const quizesCollectionRef = collection(db, "quiz")
+          const data = await addDoc(quizesCollectionRef, { questions } );
+      setQuestions([])
+    }
+
       };
 
   const [questions, setQuestions] = useState([]);
   const [nextQuestionType, setNextQuestionType] = useState("ABCD");
   const Logged = () => {
 
-    let questionsList = 
-    questions.length > 0 && 
+    function deleteQuestion(questionIndex) {
+      console.log('idx: ', questionIndex)
+      setQuestions(questions.splice(questionIndex, 1))
+      console.log('idx: ', questionIndex)
+      console.log(questions)
+    }
+
+    useEffect(() => {
+
+    },[questions])
+
+    let questionsList =
+    questions.length > 0 &&
     questions.map((item, id) => {
-      if(item.type === "open"){
+      if(item.type === "open" && item != null){
         if(!null){
           return (
-            <div>
+            <tr key={id}>
+            <td>
               <h2>
                 {id + 1}. question:
               </h2>
@@ -37,14 +52,16 @@ const ExamCreate = () => {
                 {id + 1}. answer:
               </h2>
               <p>{item.answer}</p>
-              <button> delete this question (not working yet!)</button>
-            </div>
+              <button className="quizButton" onClick={()=>{deleteQuestion(id)}}> delete this question (not working yet!)</button>
+              </td>
+            </tr>
           );
         }
-      }else{
+      }else if(item.type === "choice" && item != null){
         return (
           <>
-            <div>
+            <tr key={id}>
+             <td>
               <h2>
                 {id + 1}. question:
               </h2>
@@ -61,8 +78,9 @@ const ExamCreate = () => {
                 <br/>
                 {item.correctAnswer}
               </h2>
-              <button className="quizButton"> delete this question (not working yet!)</button>
-            </div>
+              <button className="quizButton" onClick={()=>{deleteQuestion(id)}}> delete this question (not working yet!)</button>
+              </td>
+            </tr>
           </>
         )
       }
@@ -85,12 +103,12 @@ const ExamCreate = () => {
       function questionCreate (dataCreate) {
         const tempQuestions = [];
         setIndex(index + 1)
-        let questionsNewObj; 
+        let questionsNewObj;
         if(nextQuestionType === "open answer"){
           questionsNewObj = {
             id: index,
             type: "open",
-            question: dataCreate.question, 
+            question: dataCreate.question,
             answer: dataCreate.openAnswer
           };
           setQuestions([...questions, questionsNewObj]);
@@ -98,7 +116,7 @@ const ExamCreate = () => {
           questionsNewObj = {
             id: index,
             type: "choice",
-            question: dataCreate.question, 
+            question: dataCreate.question,
             answerA: dataCreate.answerA,
             answerB: dataCreate.answerB,
             answerC: dataCreate.answerC,
@@ -108,7 +126,7 @@ const ExamCreate = () => {
           setQuestions([...questions, questionsNewObj]);
           console.log(questions)
         }
-      
+
 
         console.log(questions);
       }
@@ -165,7 +183,7 @@ const ExamCreate = () => {
 
       return (
         <>
-      <form onSubmit={handleSubmit(questionCreate)} className="quizForm"> 
+      <form onSubmit={handleSubmit(questionCreate)} className="quizForm">
         <label >Question</label>
         <input className="quizInput" {...register('question')}></input>
         <br></br>
@@ -179,7 +197,7 @@ const ExamCreate = () => {
         <button className="quizButton" onClick={() => {handleAnswerTypeChange()}}>Change question type to {nextQuestionType === "ABCD"? "open answer" : "ABCD"}</button>
         <button className="quizButton" onClick={() => {navigate('/menu')}}>go back to menu</button>
       </div>
-      
+
       </>
       )
     }
@@ -187,7 +205,7 @@ const ExamCreate = () => {
     return (
       <div>
         <MyForm></MyForm>
-        <div>{questionsList}</div>
+        <table><thead/><tbody>{questionsList}</tbody></table>
       </div>
     )
   }
@@ -196,7 +214,7 @@ const ExamCreate = () => {
     return (
       <>
         <Logged></Logged>
-        
+
       </>
       );
   }else if (isRegistered){
@@ -209,5 +227,5 @@ const ExamCreate = () => {
     )
   }
 }
- 
+
 export default ExamCreate;
