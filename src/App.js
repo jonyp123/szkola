@@ -5,6 +5,7 @@ import Home from './home';
 import Menu from './menu';
 import ReactDOM from 'react-dom/client';
 import ExamCreate from './examCreate';
+import ExamJoin from './examJoin';
 
 const App= () => {
 
@@ -15,6 +16,7 @@ const App= () => {
           <Route path="/" element={<Home/>}/>
           <Route path="/Menu" element={<Menu/>}/>
           <Route path="/ExamCreate" element={<ExamCreate/>}/>
+          <Route path="/ExamJoin" element={<ExamJoin/>}/>
           </Routes>
       </div>
     </Router>

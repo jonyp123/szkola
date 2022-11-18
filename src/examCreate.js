@@ -63,18 +63,18 @@ const ExamCreate = () => {
             <tr key={id}>
              <td>
               <h2>
-                {id + 1}. question:
+                {id + 1}. Question
               </h2>
               <p>{item.question}</p>
               <h2>
-                answers:
+                Answers
               </h2>
               <p>A: {item.answerA}</p>
               <p>B: {item.answerB}</p>
               <p>C: {item.answerC}</p>
               <p>D: {item.answerD}</p>
               <h2>
-                correct answer:
+                Correct answer:
                 <br/>
                 {item.correctAnswer}
               </h2>
@@ -147,26 +147,28 @@ const ExamCreate = () => {
         if(nextQuestionType === "ABCD"){
         return(
           <>
-            <br></br>
-            <label >First Answer</label>
+          <div className="quiz-container">
+          
+            <label >Answer A</label>
             <input  className="quizInput" {...register('answerA')}></input>
-            <br></br>
-            <label >Second Answer</label>
+           
+            <label >Answer B</label>
             <input  className="quizInput" {...register('answerB')}></input>
-            <br></br>
-            <label >Third Answer</label>
+            
+            <label >Answer C</label>
             <input  className="quizInput" {...register('answerC')}></input>
-            <br></br>
-            <label >fourth Answer</label>
+           
+            <label >Answer D</label>
             <input  className="quizInput" {...register('answerD')}></input>
-            <br></br>
-            <label >which answer is correct?</label>
+           
+            <label >Which answer is correct?</label>
             <select {...register('correctAnswer')}>
               <option value={"a"}>A</option>
               <option value={"b"}>B</option>
               <option value={"c"}>C</option>
               <option value={"d"}>D</option>
             </select>
+          </div>
           </>
         )
         }else{
@@ -183,21 +185,23 @@ const ExamCreate = () => {
 
       return (
         <>
+        <div className="quiz-container">
       <form onSubmit={handleSubmit(questionCreate)} className="quizForm">
-        <label >Question</label>
+        <label className="question">Question</label>
         <input className="quizInput" {...register('question')}></input>
         <br></br>
 
         <Answer/>
-        <button type="submit" className="quizButton">submit Question</button>
+        <button type="submit" className="quizButton">Add another</button>
       </form>
-      <div className="quizContainer">
-        <button className="quizButton" onClick={() => {setQuestions([])}}>reset quiz</button>
+      
+        <button className="quizButton" onClick={() => {setQuestions([])}}>Reset</button>
         <button className="quizButton" onClick={() => {submitWholeQuiz()}}>Save your quiz</button>
-        <button className="quizButton" onClick={() => {handleAnswerTypeChange()}}>Change question type to {nextQuestionType === "ABCD"? "open answer" : "ABCD"}</button>
-        <button className="quizButton" onClick={() => {navigate('/menu')}}>go back to menu</button>
+        <button className="quizButton" onClick={() => {handleAnswerTypeChange()}}> {nextQuestionType === "ABCD"? "Open questions" : "Closed questions"}</button>
+        <button className="quizButton" onClick={() => {navigate('/menu')}}>Main menu</button>
+        <div><table><thead/><tbody>{questionsList}</tbody></table></div>
       </div>
-
+     
       </>
       )
     }
@@ -205,7 +209,7 @@ const ExamCreate = () => {
     return (
       <div>
         <MyForm></MyForm>
-        <table><thead/><tbody>{questionsList}</tbody></table>
+        
       </div>
     )
   }

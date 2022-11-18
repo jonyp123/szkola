@@ -39,7 +39,12 @@ const Menu = () => {
     </p>
     
   </div>
-    <div className="grid-item3">
+    <div className="grid-item3" onClick=
+      {
+    () =>{
+      navigate("/ExamJoin");
+    }
+      }       >
     <FontAwesomeIcon icon={faUsers} />
       <p>
       Join an exam
@@ -53,6 +58,9 @@ const Menu = () => {
       <p>Log Out</p>
       </div>
  
+
+
+
 </div>
 
 </div>
