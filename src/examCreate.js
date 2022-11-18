@@ -199,6 +199,7 @@ const ExamCreate = () => {
         <button className="quizButton" onClick={() => {submitWholeQuiz()}}>Save your quiz</button>
         <button className="quizButton" onClick={() => {handleAnswerTypeChange()}}> {nextQuestionType === "ABCD"? "Open questions" : "Closed questions"}</button>
         <button className="quizButton" onClick={() => {navigate('/menu')}}>Main menu</button>
+        <div><table><thead/><tbody>{questionsList}</tbody></table></div>
       </div>
      
       </>
@@ -208,7 +209,7 @@ const ExamCreate = () => {
     return (
       <div>
         <MyForm></MyForm>
-        <table><thead/><tbody>{questionsList}</tbody></table>
+        
       </div>
     )
   }
