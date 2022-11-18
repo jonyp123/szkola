@@ -52,6 +52,7 @@ const Menu = () => {
     </div>
     <div className="grid-item4"  onClick={()=>{
       navigate("/");
+	  sessionStorage.setItem("logged", "false")
       }  
       }>
       <FontAwesomeIcon icon={faArrowRight} />
@@ -66,7 +67,7 @@ const Menu = () => {
 </div>
     )
   }
-  if(isLogged){
+  if(sessionStorage.getItem("logged") === "true"){
     return (
       <Logged></Logged>
       );

@@ -45,6 +45,7 @@ const RegisterForm = () => {
       const Create = async () =>{
       const data = await addDoc(usersCollectionRef, { login: newUser, password: md5(newPass)});
       isRegistered = true;
+	  sessionStorage.setItem("logged", "true");
       test2 = newUser;
       navigate("/menu");
       };
