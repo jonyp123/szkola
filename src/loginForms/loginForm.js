@@ -51,6 +51,7 @@ const LoginForm = () => {
         navigate("./../menu");
         test = login;
         isLogged = true;
+		sessionStorage.setItem("logged", "true");
         return;
       }else{
         console.log("uzytkownik nie istnieje")

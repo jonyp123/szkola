@@ -214,16 +214,12 @@ const ExamCreate = () => {
     )
   }
 
-  if(isLogged){
+  if(sessionStorage.getItem("logged") === "true"){
     return (
       <>
         <Logged></Logged>
 
       </>
-      );
-  }else if (isRegistered){
-    return (
-      <Logged></Logged>
       );
   }else{
     return (
