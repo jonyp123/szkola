@@ -7,15 +7,18 @@ import { useState, useEffect } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import {db} from './firebase-config';
 import './examCreate.css';
-
 const ExamCreate = () => {
 
   let navigate = useNavigate();
 
   const createQuiz = async() => {
+    let quizCode;
     if(questions.length > 0){
+      for(let i = 0; i <= 12; i= i + 2){
+        quizCode = quizCode + Date.now().toString().charAt(i)
+      }
       const quizesCollectionRef = collection(db, "quiz")
-          const data = await addDoc(quizesCollectionRef, { questions } );
+          const data = await addDoc(quizesCollectionRef, { questions, QuizPostCode: quizCode } );
       setQuestions([])
     }
 
@@ -30,6 +33,7 @@ const ExamCreate = () => {
       setQuestions(questions.splice(questionIndex, 1))
       console.log('idx: ', questionIndex)
       console.log(questions)
+      console.log(Date.now().toString().charAt(11))
     }
 
     useEffect(() => {
@@ -42,8 +46,7 @@ const ExamCreate = () => {
       if(item.type === "open" && item != null){
         if(!null){
           return (
-            <tr key={id}>
-            <td>
+            <div>
               <h2>
                 {id + 1}. question:
               </h2>
@@ -53,8 +56,7 @@ const ExamCreate = () => {
               </h2>
               <p>{item.answer}</p>
               <button className="quizButton" onClick={()=>{deleteQuestion(id)}}> delete this question (not working yet!)</button>
-              </td>
-            </tr>
+              </div>
           );
         }
       }else if(item.type === "choice" && item != null){
@@ -147,7 +149,7 @@ const ExamCreate = () => {
         if(nextQuestionType === "ABCD"){
         return(
           <>
-          <div className="quiz-container">
+          <div className="choice-container">
           
             <label >Answer A</label>
             <input  className="quizInput" {...register('answerA')}></input>
@@ -199,7 +201,7 @@ const ExamCreate = () => {
         <button className="quizButton" onClick={() => {submitWholeQuiz()}}>Save your quiz</button>
         <button className="quizButton" onClick={() => {handleAnswerTypeChange()}}> {nextQuestionType === "ABCD"? "Open questions" : "Closed questions"}</button>
         <button className="quizButton" onClick={() => {navigate('/menu')}}>Main menu</button>
-        <div><table><thead/><tbody>{questionsList}</tbody></table></div>
+        <div>{questionsList}</div>
       </div>
      
       </>
@@ -218,7 +220,6 @@ const ExamCreate = () => {
     return (
       <>
         <Logged></Logged>
-
       </>
       );
   }else{

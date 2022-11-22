@@ -10,9 +10,9 @@ import {db} from './firebase-config';
 import { collection, getDocs, addDoc } from 'firebase/firestore';
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { height } from './loginForms/registerForm';
 
-
-const Home= () => {
+const Home= (props) => {
 
   const [isLoging, setIsLoging] = useState(true)
   const [users, setUsers] = useState(true)

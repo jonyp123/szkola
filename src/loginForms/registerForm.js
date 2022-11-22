@@ -16,6 +16,7 @@ export let isRegistered = false;
 const RegisterForm = () => {
   
   const [users, setUsers] = useState([])
+  const [repeatPassword, setRepeatPassword] = useState("")
   const [newUser, setNewUser] = useState("")
   const [newPass, setNewPass] = useState("")
   const [exists, setExists] = useState(false)
@@ -70,15 +71,19 @@ const RegisterForm = () => {
 
   function handlePasswordChange(e) {
     setNewPass(e.target.value); 
+    if(e.target.value === repeatPassword){
+      setPasswordMatch(true)
+    }else{
+      setPasswordMatch(false)
+    }
   }
 
   function handleRepeatPasswordChange(e) {
+    setRepeatPassword(e.target.value)
     if(e.target.value === newPass){
       setPasswordMatch(true)
-      console.log("zgadzaja sie, " + newPass)
     }else{
       setPasswordMatch(false)
-      console.log("nie zgadzaja sie, " + newPass)
     }
   }
 
