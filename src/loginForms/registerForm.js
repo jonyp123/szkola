@@ -1,6 +1,6 @@
 import React from "react";
 import Home from "../home";
-import {useForm} from "react-hook-form";
+import {useForm, useWatch} from "react-hook-form";
 import { collection, getDocs, addDoc } from 'firebase/firestore';
 import {db} from './../firebase-config';
 import { useEffect } from "react";
@@ -26,8 +26,8 @@ const RegisterForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm();
+    watch,
+  } = useForm({ mode: 'onSubmit'});
 
   useEffect(() => {
     isRegistered = false;
@@ -68,24 +68,32 @@ const RegisterForm = () => {
       }
     }
   }
-
-  function handlePasswordChange(e) {
-    setNewPass(e.target.value); 
-    if(e.target.value === repeatPassword){
-      setPasswordMatch(true)
-    }else{
-      setPasswordMatch(false)
-    }
+  
+  function validateRepeatPassword(value){
+    if (watch().password != value) {
+      console.log("hasla sie nie zgadzaja")
+      return "blad";
+  }
+  return true;
   }
 
-  function handleRepeatPasswordChange(e) {
-    setRepeatPassword(e.target.value)
-    if(e.target.value === newPass){
-      setPasswordMatch(true)
-    }else{
-      setPasswordMatch(false)
-    }
-  }
+  // function handlePasswordChange(e) {
+  //   setNewPass(e.target.value); 
+  //   if(e.target.value === repeatPassword){
+  //     setPasswordMatch(true)
+  //   }else{
+  //     setPasswordMatch(false)
+  //   }
+  // }
+
+  // function handleRepeatPasswordChange(e) {
+  //   setRepeatPassword(e.target.value)
+  //   if(e.target.value === newPass){
+  //     setPasswordMatch(true)
+  //   }else{
+  //     setPasswordMatch(false)
+  //   }
+  // }
 
   return (  
     <>
@@ -97,12 +105,12 @@ const RegisterForm = () => {
               </div>
               {exists && <AlreadyExists></AlreadyExists>}
               <div className="txt">
-                  <input type="password" id="password" required onChange={(e)=>{handlePasswordChange(e)}}/>
+                  <input type="password" id="password" {...register("password")} required/>
                   <span></span>
                   <label>Password</label>
               </div>
               <div className="txt">
-                  <input type="password" id="repeatPassword" required onChange={(e)=>{handleRepeatPasswordChange(e)}}/>
+                  <input type="password" id="repeatPassword" {...register("reapeatPassword", {validate: validateRepeatPassword})} required/>
                   <span></span>
                   <label>Repeat password</label>
               </div>
