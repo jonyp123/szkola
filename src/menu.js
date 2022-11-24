@@ -7,7 +7,6 @@ import { faUsers } from "@fortawesome/free-solid-svg-icons";
 import {test, isLogged} from "./loginForms/loginForm"
 import { useNavigate } from "react-router-dom";
 import App from './App';
-import { isRegistered, test2 } from './loginForms/registerForm';
 import NotLogged from './errors/notLogged';
 const Menu = () => {
 
@@ -20,7 +19,7 @@ const Menu = () => {
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet"/>
 
   <div className="hello">
-<p className="anim">Hello, {isLogged? test : test2}</p></div>
+<p className="anim">Hello, {sessionStorage.getItem("nick")}</p></div>
 <div className="grid-container">
 
     <div className="grid-item1" onClick={()=>{
@@ -68,10 +67,6 @@ const Menu = () => {
     )
   }
   if(sessionStorage.getItem("logged") === "true"){
-    return (
-      <Logged></Logged>
-      );
-  }else if (isRegistered){
     return (
       <Logged></Logged>
       );

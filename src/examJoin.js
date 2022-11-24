@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { isLogged } from "./loginForms/loginForm";
-import { isRegistered } from "./loginForms/registerForm";
 import NotLogged from "./errors/notLogged";
 import './examJoin.css';
 

@@ -1,8 +1,7 @@
 import { isLogged } from "./loginForms/loginForm";
 import { useNavigate } from "react-router-dom";
-import { isRegistered } from "./loginForms/registerForm";
 import NotLogged from "./errors/notLogged";
-import { FormProvider, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import {db} from './firebase-config';
