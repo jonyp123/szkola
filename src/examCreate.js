@@ -148,27 +148,27 @@ const ExamCreate = () => {
         if(nextQuestionType === "ABCD"){
         return(
           <>
-          <div className="choice-container">
-          
+          <div className="quiz-container">
+          <form>
             <label >Answer A</label>
-            <input  className="quizInput" {...register('answerA')}></input>
+            <input {...register('answerA')}></input>
            
             <label >Answer B</label>
-            <input  className="quizInput" {...register('answerB')}></input>
+            <input {...register('answerB')}></input>
             
             <label >Answer C</label>
-            <input  className="quizInput" {...register('answerC')}></input>
+            <input {...register('answerC')}></input>
            
             <label >Answer D</label>
-            <input  className="quizInput" {...register('answerD')}></input>
-           
-            <label >Which answer is correct?</label>
+            <input {...register('answerD')}></input>
+           <p >Which answer is correct?</p>
             <select {...register('correctAnswer')}>
               <option value={"a"}>A</option>
               <option value={"b"}>B</option>
               <option value={"c"}>C</option>
               <option value={"d"}>D</option>
             </select>
+            </form>
           </div>
           </>
         )
@@ -193,14 +193,15 @@ const ExamCreate = () => {
         <br></br>
 
         <Answer/>
-        <button type="submit" className="quizButton">Add another</button>
-      </form>
-      
+        </form>
+        <button type="submit" className="anotherButton">Add another</button>
+
         <button className="quizButton" onClick={() => {setQuestions([])}}>Reset</button>
         <button className="quizButton" onClick={() => {submitWholeQuiz()}}>Save your quiz</button>
         <button className="quizButton" onClick={() => {handleAnswerTypeChange()}}> {nextQuestionType === "ABCD"? "Open questions" : "Closed questions"}</button>
         <button className="quizButton" onClick={() => {navigate('/menu')}}>Main menu</button>
         <div>{questionsList}</div>
+       
       </div>
      
       </>

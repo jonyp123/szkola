@@ -41,7 +41,9 @@
 
 
 body{
-    background-color: #5a9685bc;
+    background: rgb(78,134,118);
+    background: linear-gradient(90deg, rgba(78,134,118,1) 0%, rgba(113,184,164,1) 100%);
+
     margin: 0;
     padding: 0;
 
