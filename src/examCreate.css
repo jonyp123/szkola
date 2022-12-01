@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+*{
+  font-family: 'Comfortaa';
+}
+
+.quizForm{
+  height: 100px;
+}
+.quiz-container{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  background-color: rgb(236, 233, 233, 0.6);
+  width: 700px;
+  display: inline-block;
+  padding: 30px;
+
+}
+
+.quizInput{
+  border-radius: 2px;
+  border: none;
+  margin: 5px;
+
+}
+
+.quiz-container label {
+  position: relative;
+}

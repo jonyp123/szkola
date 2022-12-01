@@ -1,0 +1,41 @@
+.menu {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    
+    
+}
+
+h1 + h1 {
+    margin-left: 80px;
+    
+}
+
+h1 {
+    background-color: rgb(236, 233, 233);
+    border-radius: 2rem;
+    padding: 30px;
+
+}
+
+h1:hover {
+    background-color: rgb(236, 233, 233, 0.5);
+    cursor: pointer;
+}
+
+.main{
+    background-color: rgb(236, 233, 233);
+    border-radius: 2rem;
+    padding: 10px;
+    border: none;
+    position: relative;
+    left: 1rem;
+    top: 10px;
+}
+
+.main:hover{
+    background-color: rgb(236, 233, 233, 0.5);
+    cursor: pointer;
+}
