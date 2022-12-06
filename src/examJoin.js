@@ -6,11 +6,13 @@ import './examJoin.css';
 import { db } from "./firebase-config";
 import { collection, getDocs } from "firebase/firestore";
 import { useForm } from "react-hook-form";
+import Exam from "./exam";
 
 const ExamJoin = () => {
     let navigate = useNavigate();
     const usersCollectionRef = collection(db, "quiz") 
     const [quizes, setQuizes] = useState([])
+    const [isCompeting, setIsCompeting] = useState(false)
     const [matchQuiz, setMatchQuiz] = useState()
     const [showCodeInput, setShowCodeInput] = useState(false)
     const {
@@ -37,28 +39,36 @@ const ExamJoin = () => {
         for(let i = 0; i <= quizes.length; i++){
             if(quizes[i]._document.data.value.mapValue.fields.QuizPostCode.stringValue === e.quizCode){
                 setMatchQuiz(quizes[i])
+                setIsCompeting(true)
                 return 0;
             }
         }
       }
 
     if(sessionStorage.getItem("logged") === "true"){
-        return (
-            <>
-                <button className="main" onClick={() => {navigate('/menu')}}>Main menu</button>
-                <div className="menu">
-                    <h1>Randomize quiz</h1>
-                    <h1 onClick={() => {setShowCodeInput(true)}}>Join quiz</h1>
-                    {showCodeInput &&
-                    <form onSubmit={handleSubmit(chooseQuiz)}>
-                        <label>Quiz code</label>
-                        <input {...register('quizCode')}></input>
-                        <button>submit</button>
-                    </form> 
-                    }   
-                </div>
-            </>
-          );
+        if(isCompeting === false){
+            return (
+                <>
+                    <button className="main" onClick={() => {navigate('/menu')}}>Main menu</button>
+                    <div className="menu">
+                        <h1>Randomize quiz</h1>
+                        <h1 onClick={() => {setShowCodeInput(true)}}>Join quiz</h1>
+                        {showCodeInput &&
+                        <form onSubmit={handleSubmit(chooseQuiz)}>
+                            <label>Quiz code</label>
+                            <input {...register('quizCode')}></input>
+                            <button>submit</button>
+                        </form> 
+                        }   
+                    </div>
+                </>
+              );
+        }else if(isCompeting === true){
+            return(
+                <Exam quiz={matchQuiz._document.data.value.mapValue.fields}></Exam>
+            )
+        }
+
     }else{
         return(
             <NotLogged></NotLogged>

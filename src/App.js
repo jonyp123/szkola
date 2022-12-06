@@ -7,6 +7,7 @@ import ReactDOM from 'react-dom/client';
 import ExamCreate from './examCreate';
 import ExamJoin from './examJoin';
 import ManageExams from './ManageExams';
+import Exam from './exam';
 
 const App= () => {
 

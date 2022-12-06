@@ -8,6 +8,7 @@ import {test, isLogged} from "./loginForms/loginForm"
 import { useNavigate } from "react-router-dom";
 import App from './App';
 import NotLogged from './errors/notLogged';
+import Exam from './exam';
 const Menu = () => {
 
   let navigate = useNavigate();
@@ -72,6 +73,7 @@ const Menu = () => {
   if(sessionStorage.getItem("logged") === "true"){
     return (
       <Logged></Logged>
+
       );
   }else{
     return (
