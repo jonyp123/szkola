@@ -6,6 +6,9 @@ import { useState, useEffect } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import {db} from './firebase-config';
 import './examCreate.css';
+import React from 'react';
+
+
 const ExamCreate = () => {
 
   let navigate = useNavigate();
