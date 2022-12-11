@@ -1,6 +1,8 @@
 # `Running our react App`
+	
+# `Add your firebase database`
 
-	Firstly you need to install node in project using
+	Secondly you need to install node in project using
 	
 ### `npm install`
 
