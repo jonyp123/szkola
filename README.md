@@ -1,6 +1,8 @@
 # `Running our react App`
-
-	Firstly you need to install node in project using
+	
+# `Add your firebase database`
+	By creating firebase-conifg.js and pasting there text that firebase gives you to connect to a database
+	Secondly you need to install node in project using
 	
 ### `npm install`
 
