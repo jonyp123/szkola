@@ -19,20 +19,16 @@ const Home= () => {
 
   const [isLoging, setIsLoging] = useState(true)
   const [users, setUsers] = useState(true)
-  const [canLoginExist, setCanLoginExist] = useState(false)
-  const [canLoginPass, setCanLoginPass] = useState(false)
+  const [canLoginExist, setCanLoginExist] = useState()
+  const [canLoginPass, setCanLoginPass] = useState()
   const [height, setHeight] = useState(300)
 
   function handleRegisterButton(){
     setIsLoging(false);
-    setCanLoginExist(false)
-    setCanLoginPass(false)
     setHeight(350)
   }
   function handleLoginButton(){
     setIsLoging(true);
-    setCanLoginExist(false)
-    setCanLoginPass(false)
     setHeight(300)
   }
 
@@ -58,32 +54,32 @@ const Home= () => {
       getUsers();
     }, [])
   
+    const Create = async () =>{
+      const data = await addDoc(usersCollectionRef, { login: watch().login, password: md5(watch().password)});
+    sessionStorage.setItem("logged", "true");
+    sessionStorage.setItem("nick", watch().login);
+      navigate("/menu");
+      };
+
     function createUser() {
-      // let existInside = false;
-      // let passwordRegInside = false;
-      // if(watch().password != watch().repeatPassword){
-      //   passwordRegInside = false
-      // }else{
-      //   passwordRegInside = true;
-      // }
       for(var i = 0; i < users.length; i++){
         if(watch().login === users[i]._document.data.value.mapValue.fields.login.stringValue){
           setHeight(380)
           setCanLoginExist(true)
           return 0;
+        }else{
+          setCanLoginExist(false)
         }
       }
       if(watch().password != watch().repeatPassword){
         setHeight(380)
         setCanLoginPass(true)
+      }else{
+        setCanLoginPass(false)
       }
+      console.log(canLoginExist + " " + canLoginPass)
+      console.log(watch().password + " " + watch().repeatPassword)
       if(canLoginExist === false && canLoginPass === false){
-        const Create = async () =>{
-        const data = await addDoc(usersCollectionRef, { login: watch().login, password: md5(watch().password)});
-      sessionStorage.setItem("logged", "true");
-      sessionStorage.setItem("nick", watch().login);
-        navigate("/menu");
-        };
         Create();
       }
     };
@@ -103,7 +99,7 @@ const Home= () => {
                     <label>Password</label>
                 </div>
                 <div className="txt">
-                    <input type="password" id="repeatPassword" {...register("reapeatPassword")} required/>
+                    <input type="password" id="repeatPassword" {...register("repeatPassword")} required/>
                     <span></span>
                     <label>Repeat password</label>
                 </div>
