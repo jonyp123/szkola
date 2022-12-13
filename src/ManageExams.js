@@ -8,6 +8,7 @@ const ManageExams = () => {
     let navigate = useNavigate();
     let path = "_document.data.value.mapValue.fields"
     const usersCollectionRef = collection(db, "quiz")
+    const [thang, setThang] = useState()
     const [quizes, setQuizes] = useState([])
     const [quizesTable, setQuizesTable] = useState([])
 
@@ -19,11 +20,13 @@ const ManageExams = () => {
         getQuizes();
       }, [])
 
+      function showResults(quizCode){
+        setThang(quizCode)
+      }
 
       const QuizList = 
         quizes.length > 0 &&
         quizes.map((item, i) =>{
-            console.log(i)
             if(quizes[i]._document.data.value.mapValue.fields.owner.stringValue === sessionStorage.getItem("nick")){
                 return (
                     <div key={i} style={{marginTop: 20}}>
@@ -31,36 +34,60 @@ const ManageExams = () => {
                         <br></br>
                         {quizes[i]._document.data.value.mapValue.fields.QuizPostCode.stringValue}
                         <br></br>
+                        <button onClick={(e) => {showResults(quizes[i]._document.data.value.mapValue.fields.QuizPostCode.stringValue)}}>Show/Unshow results</button>
+                        <br></br>
+                        <br></br>
                     </div>
             )
-            }else {
+
+        }})
+
+        const Results = () => {
+            const usersCollectionRef = collection(db , "result")
+            const [results, setResults] = useState([])
+          
+            useEffect (() => {
+              const getQuizes = async () => {
+                let tempResults =[]
+                const data = await getDocs(usersCollectionRef);
+                setResults(data.docs)
+              };
+              getQuizes();
+            }, [])
+            let resultsComponent =
+            results.map((item, i) => {
+              if(item._document.data.value.mapValue.fields.code.stringValue === thang){
+                console.log(item._document.data.value.mapValue.fields.points.integerValue)
                 return(
-                    <div key={i}>
-                    
-                </div>
+                  <>
+                    {item._document.data.value.mapValue.fields.player.stringValue}
+                    <br></br>
+                    {item._document.data.value.mapValue.fields.points.integerValue}
+                    <br></br>
+                  </>
                 )
-            }
-
-        })
-
-
-
-
-
-
-
-
-
-
-
-
+              }
+          
+            })
+            return(
+              <>
+                {resultsComponent}
+                <br></br>
+              </>
+            )
+          }
 
     if(sessionStorage.getItem("logged") === "true"){
         return(
-            <>
-            <button className="main" onClick={() => {navigate('/menu')}}>Main menu</button>
+            <div className="parentManage">
+            <div className="ManageQuizList">
+                <button className="main" onClick={() => {navigate('/menu')}}>Main menu</button>
             {QuizList}
-            </>
+            </div>
+            <div className="ManageQuizResults">
+            <Results/>
+            </div>
+            </div>
         )
     }else{
         return(

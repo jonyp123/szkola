@@ -8,6 +8,7 @@ import ExamCreate from './examCreate';
 import ExamJoin from './examJoin';
 import ManageExams from './ManageExams';
 import Exam from './exam';
+import Results from './Results';
 
 const App= () => {
 
@@ -20,6 +21,7 @@ const App= () => {
           <Route path="/ExamCreate" element={<ExamCreate/>}/>
           <Route path="/ExamJoin" element={<ExamJoin/>}/>
           <Route path="/ManageExams" element={<ManageExams/>}/>
+          <Route  path="/Test" element={<Results/>}></Route>
           </Routes>
       </div>
     </Router>
