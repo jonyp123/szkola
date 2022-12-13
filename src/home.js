@@ -62,24 +62,24 @@ const Home= () => {
       };
 
     function createUser() {
+      let canLoginPassLet;
+      let canLoginExistLet;
       for(var i = 0; i < users.length; i++){
         if(watch().login === users[i]._document.data.value.mapValue.fields.login.stringValue){
           setHeight(380)
-          setCanLoginExist(true)
+          canLoginExistLet = true
           return 0;
         }else{
-          setCanLoginExist(false)
+          canLoginExistLet = false
         }
       }
       if(watch().password != watch().repeatPassword){
         setHeight(380)
-        setCanLoginPass(true)
+        canLoginPassLet = true
       }else{
-        setCanLoginPass(false)
+        canLoginPassLet = false
       }
-      console.log(canLoginExist + " " + canLoginPass)
-      console.log(watch().password + " " + watch().repeatPassword)
-      if(canLoginExist === false && canLoginPass === false){
+      if(canLoginExistLet === false && canLoginPassLet === false){
         Create();
       }
     };

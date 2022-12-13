@@ -44,6 +44,11 @@ const ExamJoin = () => {
             }
         }
       }
+      function randomizeQuiz(e) {
+        let randomize = Math.floor(Math.random() * quizes.length);
+        setMatchQuiz(quizes[randomize])
+        setIsCompeting(true)
+      }
 
     if(sessionStorage.getItem("logged") === "true"){
         if(isCompeting === false){
@@ -51,7 +56,7 @@ const ExamJoin = () => {
                 <>
                     <button className="main" onClick={() => {navigate('/menu')}}>Main menu</button>
                     <div className="menu">
-                        <h1>Randomize quiz</h1>
+                        <h1 onClick={() => {randomizeQuiz()}}>Randomize quiz</h1>
                         <h1 onClick={() => {setShowCodeInput(true)}}>Join quiz</h1>
                         {showCodeInput &&
                         <form onSubmit={handleSubmit(chooseQuiz)}>

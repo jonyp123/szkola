@@ -52,7 +52,7 @@ const Exam = (quiz) => {
         if(item.type == "open"){
           return (
             <>
-            <div className='questionExam'>{item.question}</div>
+            <div className='questionExam'>question {i + 1}: {item.question}</div>
             <br></br>
             <input {...register(`question${i}`)}></input>
             </>
@@ -60,7 +60,7 @@ const Exam = (quiz) => {
         }else if(item.type == "choice"){
           return(
             <div className='questionExam'>          
-            {item.question}
+            question {i}: {item.question}
             <br></br>
             <select {...register(`question${i}`)}>
               <option value="a">{item.answerA}</option>
@@ -101,10 +101,14 @@ const Exam = (quiz) => {
 
         return(
         <div className='questionsExam'>
+          Creator: {quiz.quiz.owner.stringValue}
+          <br></br>
+          Title: {quiz.quiz.quizTitle.stringValue ? quiz.quiz.quizTitle.stringValue : "Unnamed"}
+          <br></br>
+          <br></br>
           {smth}
           <button className="main" onClick={() => {navigate('/menu')}}>Stop the quiz</button>
           <button className="main" onClick={() => {submit()}}>Submit</button>
-          <button className="main" onClick={() => {checkPoints()}}>check points</button>
         </div>
         );
 }
